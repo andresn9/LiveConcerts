@@ -1,4 +1,4 @@
-package com.android.liveconcerts.Config
+package com.android.liveconcerts.config
 
 object Config {
     const val PAYPAL_CLIENT_ID =
