@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.android.liveconcerts.databinding.ActivityMainBinding
 import com.android.liveconcerts.objects.UserInfo
@@ -31,15 +32,9 @@ class MainActivity : AppCompatActivity() {
         i.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config)
         startService(i)
 
+        //getResult.launch(intent)
+
         binding.btnPaypal.setOnClickListener{
-
-            val getResult = registerForActivityResult( ActivityResultContracts.StartActivityForResult()) {
-                if (it.resultCode == Activity.RESULT_OK) {
-
-                    val value = it.data?.getStringExtra("input")
-
-                }
-            }
 
             amount = binding.totalV.text.toString().toDouble()
 
@@ -48,8 +43,6 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config)
             intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment)
             startActivity(intent)
-            //getResult.launch(intent)
-
 
         }
 
