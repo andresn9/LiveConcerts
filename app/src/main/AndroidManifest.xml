@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveConcerts">
         <activity
+            android:name=".PayPalActivity"
+            android:exported="false" />
+        <activity
             android:name=".Confirm"
             android:exported="false" />
         <activity
