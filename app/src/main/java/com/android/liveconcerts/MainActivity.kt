@@ -7,6 +7,10 @@ import android.os.Bundle
 import com.android.liveconcerts.databinding.ActivityMainBinding
 import com.paypal.android.sdk.payments.PayPalService
 
+enum class ProviderType{
+    BASIC //tipo de autenticación básica con email y contraseña
+}
+
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
@@ -15,7 +19,6 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
 
     }
 

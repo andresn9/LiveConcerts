@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">LiveConcerts</string>
+    <string name="welcome">Bienvenido a LiveConcerts</string>
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="signIn">Registrarse</string>
 </resources>

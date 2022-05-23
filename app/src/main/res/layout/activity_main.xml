@@ -42,7 +42,7 @@
             android:inputType="textPersonName"
             android:padding="10dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/hint_color"
+            android:textColorHint="@color/white"
             android:textSize="21sp" />
 
         <EditText
@@ -58,7 +58,7 @@
             android:inputType="textPassword"
             android:padding="10dp"
             android:textColor="@color/white"
-            android:textColorHint="@color/hint_color"
+            android:textColorHint="@color/white"
             android:textSize="21sp" />
 
         <Button

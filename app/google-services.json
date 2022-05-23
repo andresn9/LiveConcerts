@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "857038577462",
+    "project_id": "liveconcerts-4f792",
+    "storage_bucket": "liveconcerts-4f792.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:857038577462:android:fb6b8f812dca258e9d1d97",
+        "android_client_info": {
+          "package_name": "com.android.liveconcerts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "857038577462-df6ouavp5s2kiofb15flq7nlfsqn20ht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANw_AvjowjP3eua1iBFfaSqiYz5BY2Xp4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "857038577462-df6ouavp5s2kiofb15flq7nlfsqn20ht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
