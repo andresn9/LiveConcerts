@@ -1,88 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_centerInParent="true"
-        android:background="@drawable/background"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.LiveConcerts.AppBarOverlay"
+        android:background="@color/blackPrimary">
 
-        <ImageView
-            android:id="@+id/img_logo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/edit_text_background"
-            android:scaleType="fitCenter"
-            android:src="@drawable/code_android_logo"
-            android:visibility="visible" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="?actionBarSize"
+            android:padding="@dimen/appbar_padding"
+            android:text="@string/app_name"
+            android:textColor="@color/yellowPrimary"
+            android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
 
-
-        <EditText
-            android:id="@+id/username"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_background"
-            android:drawableStart="@drawable/ic_user"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:hint="User Name"
-            android:inputType="textPersonName"
-            android:padding="10dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="21sp" />
+            android:layout_height="wrap_content"
+            android:background="@color/blackPrimaryLight"
+            app:tabTextColor="@color/yellowPrimaryLight"
+            app:tabIndicatorColor="@color/yellowPrimaryDark"
+            app:tabRippleColor="@color/yellowPrimaryDark"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/edit_text_background"
-            android:drawableStart="@drawable/ic_password"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="10dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="21sp" />
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@color/lightGray"/>
 
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/button_background"
-            android:text="Iniciar sesión"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="21sp" />
-
-        <Button
-            android:id="@+id/btn_registro"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/button_background"
-            android:text="Registrarse"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="21sp" />
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

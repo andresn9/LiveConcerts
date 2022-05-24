@@ -13,4 +13,5 @@
     <color name="yellowPrimary">#ffeb3b</color>
     <color name="yellowPrimaryLight">#ffff72</color>
     <color name="yellowPrimaryDark">#c8b900</color>
+    <color name="lightGray">#DCDCDC</color>
 </resources>

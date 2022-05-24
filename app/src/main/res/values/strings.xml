@@ -5,4 +5,10 @@
     <string name="password">Contraseña</string>
     <string name="login">Iniciar sesión</string>
     <string name="signIn">Registrarse</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="tab_text_1">Conciertos</string>
+    <string name="tab_text_2">Tus artistas</string>
+    <string name="tab_text_3">Buscar</string>
 </resources>
