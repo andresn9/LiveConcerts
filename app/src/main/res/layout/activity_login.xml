@@ -35,10 +35,10 @@
         android:id="@+id/field_user"
         android:layout_width="321dp"
         android:layout_height="78dp"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:hint=" "
         android:inputType="textEmailAddress"
-        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/txt_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -104,4 +104,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_login"
         app:layout_constraintTop_toTopOf="@+id/btn_login" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
