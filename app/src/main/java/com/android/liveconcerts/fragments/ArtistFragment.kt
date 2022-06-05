@@ -1,18 +1,32 @@
 package com.android.liveconcerts.fragments
 
 import android.os.Bundle
+import android.text.Layout
 import android.view.*
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.android.liveconcerts.R
+import com.android.liveconcerts.databinding.ActivityLoginBinding
+import com.android.liveconcerts.databinding.FragmentArtistBinding
+import com.android.liveconcerts.objects.Artist
+import com.android.liveconcerts.recycler.ArtistAdapter
 
 
 /**
  * A simple [Fragment] subclass.
- * Use the [FindFragment.newInstance] factory method to
+ * Use the [ArtistFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FindFragment : Fragment() {
+class ArtistFragment : Fragment() {
+
+    private var _binding: FragmentArtistBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var recyclerView : RecyclerView
+    private lateinit var artistList : ArrayList<Artist>
+    private lateinit var artistAdapter: ArtistAdapter
 
     //Habilita lo que se muestra en el fragment
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +58,13 @@ class FindFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_find, container, false)
+        _binding = FragmentArtistBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        recyclerView = binding.recycler
+        recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
+        return view
     }
 }
