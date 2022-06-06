@@ -1,5 +1,6 @@
 package com.android.liveconcerts.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Layout
 import android.view.*
@@ -8,6 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.liveconcerts.EventDetailActivity
 import com.android.liveconcerts.R
 import com.android.liveconcerts.databinding.ActivityLoginBinding
 import com.android.liveconcerts.databinding.FragmentArtistBinding
@@ -64,6 +66,23 @@ class ArtistFragment : Fragment() {
         recyclerView = binding.recycler
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
+
+        artistList = ArrayList()
+
+        artistList.add(Artist(R.drawable.code_android_logo , "Los chichos"))
+        artistList.add(Artist(R.drawable.code_android_logo , "Los pecos"))
+        artistList.add(Artist(R.drawable.code_android_logo , "Los juncos"))
+        artistList.add(Artist(R.drawable.code_android_logo , "Las ketchu"))
+        artistList.add(Artist(R.drawable.code_android_logo , "Los manolos"))
+
+        artistAdapter = ArtistAdapter(artistList)
+        recyclerView.adapter = artistAdapter
+
+        artistAdapter.onItemClick = {
+            val intent = Intent(activity, EventDetailActivity::class.java)
+            intent.putExtra("artista", it)
+            startActivity(intent)
+        }
 
         return view
     }

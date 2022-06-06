@@ -13,6 +13,8 @@ import com.android.liveconcerts.objects.Artist
 class ArtistAdapter(private val artistList: ArrayList<Artist>)
     : RecyclerView.Adapter<ArtistAdapter.ArtistViewHolder>(){
 
+    var onItemClick : ((Artist) -> Unit)? = null
+
     class ArtistViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val image : ImageView = itemView.findViewById(R.id.artist_picture)
         val text : TextView = itemView.findViewById(R.id.artist_name)
@@ -25,8 +27,12 @@ class ArtistAdapter(private val artistList: ArrayList<Artist>)
 
     override fun onBindViewHolder(holder: ArtistViewHolder, position: Int) {
         val artist = artistList[position]
-        holder.image.setImageResource(artist.imageUrl)
+        holder.image.setImageResource(artist.image)
         holder.text.text = artist.name
+
+        holder.itemView.setOnClickListener{
+            onItemClick?.invoke(artist)
+        }
     }
 
     override fun getItemCount(): Int {
