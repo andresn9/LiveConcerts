@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blackPrimaryLight"
     tools:context=".EventDetailActivity">
 
     <ImageView
@@ -25,8 +26,33 @@
         android:layout_marginTop="16dp"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="@color/blackPrimaryDark"
+        android:textColor="@color/yellowPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/artistImage" />
+
+    <Button
+        android:id="@+id/btn_web"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Web"
+        android:textColor="@color/blackPrimaryDark"
+        android:backgroundTint="@color/yellowPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/artistName" />
+
+    <Button
+        android:id="@+id/btn_paypal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PayPal"
+        android:textColor="@color/blackPrimaryDark"
+        android:backgroundTint="@color/yellowPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_web" />
 </androidx.constraintlayout.widget.ConstraintLayout>
