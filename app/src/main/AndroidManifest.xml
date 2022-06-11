@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveConcerts">
         <activity
+            android:name=".TicketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CheckoutActivity"
+            android:exported="false" />
+        <activity
             android:name=".EventDetailActivity"
             android:exported="false" />
         <activity

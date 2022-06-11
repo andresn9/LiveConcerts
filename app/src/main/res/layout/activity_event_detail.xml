@@ -7,6 +7,19 @@
     android:background="@color/blackPrimaryLight"
     tools:context=".EventDetailActivity">
 
+    <Button
+        android:id="@+id/btn_tickets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="@color/yellowPrimary"
+        android:text="Entradas"
+        android:textColor="@color/blackPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_web" />
+
     <ImageView
         android:id="@+id/artistImage"
         android:layout_width="0dp"

@@ -13,6 +13,8 @@ import com.android.liveconcerts.objects.Event
 class EventAdapter (private val eventList: ArrayList<Event>) :
 RecyclerView.Adapter<EventAdapter.EventViewHolder>(){
 
+    var onItemClick : ((Event) -> Unit)? = null
+
     class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val image : ImageView = itemView.findViewById(R.id.event_image)
         val name : TextView = itemView.findViewById(R.id.event_title)
@@ -23,7 +25,7 @@ RecyclerView.Adapter<EventAdapter.EventViewHolder>(){
         init {
             itemView.setOnClickListener{
                 val position: Int = adapterPosition
-                Toast.makeText(itemView.context, "Nombre de evento: "+name, Toast.LENGTH_SHORT).show()
+                Toast.makeText(itemView.context, "Nombre de evento: "+name.toString(), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -41,6 +43,10 @@ RecyclerView.Adapter<EventAdapter.EventViewHolder>(){
         holder.description.text = event.description
         holder.date.text = event.date
         holder.price.text = event.price.toString()
+
+        holder.itemView.setOnClickListener{
+            onItemClick?.invoke(event)
+        }
     }
 
     override fun getItemCount(): Int {

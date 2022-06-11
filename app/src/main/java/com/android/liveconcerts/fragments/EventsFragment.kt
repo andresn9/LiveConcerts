@@ -1,17 +1,16 @@
 package com.android.liveconcerts.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.liveconcerts.EventDetailActivity
 import com.android.liveconcerts.R
-import com.android.liveconcerts.databinding.FragmentArtistBinding
 import com.android.liveconcerts.databinding.FragmentEventsBinding
-import com.android.liveconcerts.objects.Artist
 import com.android.liveconcerts.objects.Event
-import com.android.liveconcerts.recycler.ArtistAdapter
 import com.android.liveconcerts.recycler.EventAdapter
 
 
@@ -76,6 +75,12 @@ class EventsFragment : Fragment() {
 
         eventsAdapter = EventAdapter(eventsList)
         recyclerView.adapter = eventsAdapter
+
+        eventsAdapter.onItemClick = {
+            val intent = Intent(activity, EventDetailActivity::class.java)
+            intent.putExtra("event", it)
+            startActivity(intent)
+        }
 
         return view
     }

@@ -3,7 +3,7 @@ package com.android.liveconcerts.objects
 import android.os.Parcel
 import android.os.Parcelable
 
-data class Artist(val image:Int, val name:String) : Parcelable {
+class Artist(val image:Int, val name:String) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString()!!
