@@ -40,9 +40,6 @@ class EventDetailActivity : AppCompatActivity() {
         binding.btnPaypal.setOnClickListener{
             var ticket = Ticket(event?.name, event?.date, event?.price.toString())
             insertData(ticket)
-            var intent = Intent (this, PayPalActivity::class.java)
-            startActivity(intent)
-
         }
     }
 
