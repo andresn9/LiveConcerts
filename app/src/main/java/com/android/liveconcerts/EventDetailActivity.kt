@@ -28,29 +28,26 @@ class EventDetailActivity : AppCompatActivity() {
         if (event !=null){
             val text = binding.artistName
             val image = binding.artistImage
+            val price = binding.eventPrice
 
             db = FirebaseFirestore.getInstance()
 
             text.text = event.name
+            price.text = event.price.toString()+" €"
             image.setImageResource(event.image)
         }
 
         binding.btnPaypal.setOnClickListener{
-            var ticket = Ticket(event?.name, event?.date, event?.price)
+            var ticket = Ticket(event?.name, event?.date, event?.price.toString())
             insertData(ticket)
             var intent = Intent (this, PayPalActivity::class.java)
             startActivity(intent)
 
         }
-
-        binding.btnTickets.setOnClickListener {
-            var intent = Intent (this, TicketActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     private fun insertData(ticket: Ticket){
-        db.collection("tickets").document("entrada1").set(ticket).addOnSuccessListener {
+        db.collection("tickets").add(ticket).addOnSuccessListener {
             Toast.makeText(this, "Entrada comprada", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener{
             Toast.makeText(this, "Error al comprar la entrada", Toast.LENGTH_SHORT).show()
