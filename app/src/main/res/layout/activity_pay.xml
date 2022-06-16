@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blackPrimaryLight"
+    tools:context=".PayActivity">
+
+
+    <TextView
+        android:id="@+id/txt_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:text="precio"
+        android:textAlignment="center"
+        android:textColor="@color/yellowPrimaryDark"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnPay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
+        android:text="precio"
+        android:textAlignment="center"
+        android:textColor="@color/yellowPrimaryDark"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txt_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="precio"
+        android:textAlignment="center"
+        android:textColor="@color/yellowPrimaryDark"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txt_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.793"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fld_cvv" />
+
+    <TextView
+        android:id="@+id/txt_phrase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="124dp"
+        android:text="Vas a comprar..."
+        android:textAlignment="center"
+        android:textColor="@color/yellowPrimaryDark"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/txt_date"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fld_date" />
+
+    <Button
+        android:id="@+id/btnPay"
+        android:layout_width="187dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="116dp"
+        android:text="Confirmar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_phrase" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="187dp"
+        android:layout_height="72dp"
+        android:text="Cancelar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnPay" />
+
+    <EditText
+        android:id="@+id/fld_name"
+        android:layout_width="412dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/yellowPrimaryLight"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Nombre de la tarjeta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/fld_number"
+        android:layout_width="411dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/yellowPrimaryLight"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Número de tarjeta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fld_name" />
+
+    <EditText
+        android:id="@+id/fld_cvv"
+        android:layout_width="190dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="12dp"
+        android:background="@color/yellowPrimaryLight"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="CVV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fld_number" />
+
+    <EditText
+        android:id="@+id/fld_date"
+        android:layout_width="190dp"
+        android:layout_height="51dp"
+        android:background="@color/yellowPrimaryLight"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Fecha de expiración"
+        app:layout_constraintEnd_toStartOf="@+id/fld_cvv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fld_cvv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

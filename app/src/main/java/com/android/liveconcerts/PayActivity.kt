@@ -10,6 +10,7 @@ import android.os.Looper
 import android.widget.Toast
 import com.android.liveconcerts.databinding.ActivityEventDetailBinding
 import com.android.liveconcerts.databinding.ActivityLoginBinding
+import com.android.liveconcerts.databinding.ActivityPayBinding
 import com.android.liveconcerts.objects.Artist
 import com.android.liveconcerts.objects.Event
 import com.android.liveconcerts.objects.Ticket
@@ -29,7 +30,7 @@ import java.util.concurrent.Executors
 
 class PayActivity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityEventDetailBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityPayBinding.inflate(layoutInflater) }
     private lateinit var db : FirebaseFirestore
     val myExecutor = Executors.newSingleThreadExecutor()
     val myHandler = Handler(Looper.getMainLooper())
@@ -42,46 +43,41 @@ class PayActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val event = intent.getParcelableExtra<Event>("event")
-        if (event !=null){
+        val card_name = binding.fldName
+        val card_number = binding.fldNumber
+        val card_date = binding.fldDate
+        val card_cvv = binding.fldCvv
+
+        val ticket = intent.getParcelableExtra<Ticket>("ticket")
+        if (ticket !=null){
 
 
-            myExecutor.execute {
-                mImage = event.image?.let { mLoad(it) }
-                myHandler.post {
-                    binding.artistImage.setImageBitmap(mImage)
-
-                }
-            }
-
-            val text = binding.artistName
-            val price = binding.eventPrice
-
-
+            val name = binding.txtName
+            val date = binding.txtDate
+            val price = binding.txtPrice
 
             db = FirebaseFirestore.getInstance()
 
-            text.text = event.name
-            price.text = event.price
-            //image.setImageResource(image.sur)
+            name.text = ticket.name
+            date.text = ticket.date
+            price.text = ticket.price
         }
 
-        binding.btnPaypal.setOnClickListener{
-            var ticket = Ticket(event?.name, event?.date, event?.price.toString())
+        binding.btnPay.setOnClickListener{
+            if(card_name.text.isEmpty() || card_number.text.isEmpty() || card_date.text.isEmpty() || card_cvv.text.isEmpty()) {
+
+            }
+            var ticket = Ticket(ticket?.name, ticket?.date, ticket?.price.toString())
             insertData(ticket)
 
         }
 
-
-
-
+        binding.btnCancel.setOnClickListener{
+            finish()
+        }
 
     }
 
-//    private fun showPaypal(){
-//        val paypalIntent = Intent(this, PayPalActivity::class.java)
-//        startActivity(paypalIntent)
-//    }
 
     private fun insertData(ticket: Ticket){
         val currentuser = FirebaseAuth.getInstance().currentUser!!.uid
