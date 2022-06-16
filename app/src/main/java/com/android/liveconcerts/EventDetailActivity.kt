@@ -3,25 +3,20 @@ package com.android.liveconcerts
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.android.liveconcerts.databinding.ActivityEventDetailBinding
-import com.android.liveconcerts.databinding.ActivityLoginBinding
-import com.android.liveconcerts.objects.Artist
 import com.android.liveconcerts.objects.Event
 import com.android.liveconcerts.objects.Ticket
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.paypal.android.sdk.payments.PayPalPayment
-import com.paypal.android.sdk.payments.PayPalService
-import com.paypal.android.sdk.payments.PaymentActivity
 import java.io.BufferedInputStream
 import java.io.IOException
 import java.io.InputStream
-import java.math.BigDecimal
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
@@ -39,10 +34,20 @@ class EventDetailActivity : AppCompatActivity() {
         val INTENT_PARCELABLE = "ticket"
     }
 
+    private fun goToUrl() {
+        val uriUrl: Uri = Uri.parse("https://www.ticketmaster.es/")
+        val launchBrowser = Intent(Intent.ACTION_VIEW, uriUrl)
+        startActivity(launchBrowser)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        binding.btnWeb.setOnClickListener {
+            goToUrl()
+        }
 
         val event = intent.getParcelableExtra<Event>("event")
         if (event !=null){
