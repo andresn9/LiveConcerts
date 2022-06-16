@@ -65,11 +65,16 @@ class PayActivity : AppCompatActivity() {
 
         binding.btnPay.setOnClickListener{
             if(card_name.text.isEmpty() || card_number.text.isEmpty() || card_date.text.isEmpty() || card_cvv.text.isEmpty()) {
-
+                Toast.makeText(this, R.string.campoVacio, Toast.LENGTH_LONG).show()
+            } else if (card_number.text.length != 19 || card_date.text.length != 5 || card_cvv.text.length != 3) {
+                Toast.makeText(this, R.string.noValido, Toast.LENGTH_LONG).show()
+            } else {
+                var ticket = Ticket(ticket?.name, ticket?.date, ticket?.price.toString())
+                insertData(ticket)
+                Toast.makeText(this, R.string.comprada, Toast.LENGTH_LONG).show()
+                val mainIntent = Intent(this, MainActivity::class.java)
+                startActivity(mainIntent)
             }
-            var ticket = Ticket(ticket?.name, ticket?.date, ticket?.price.toString())
-            insertData(ticket)
-
         }
 
         binding.btnCancel.setOnClickListener{
