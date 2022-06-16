@@ -11,4 +11,7 @@
     <string name="tab_text_1">Conciertos</string>
     <string name="tab_text_2">Tus artistas</string>
     <string name="tab_text_3">Buscar</string>
+    <string name="campoVacio">Por favor, no dejes ningún campo vacío</string>
+    <string name="noValido">La tarjeta no es válida</string>
+    <string name="comprada">Entrada comprada</string>
 </resources>

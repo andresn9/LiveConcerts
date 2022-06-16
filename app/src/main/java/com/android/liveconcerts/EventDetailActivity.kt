@@ -35,7 +35,9 @@ class EventDetailActivity : AppCompatActivity() {
     val myHandler = Handler(Looper.getMainLooper())
     var mImage: Bitmap? = null
 
-
+    companion object {
+        val INTENT_PARCELABLE = "ticket"
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,7 +70,11 @@ class EventDetailActivity : AppCompatActivity() {
 
         binding.btnPaypal.setOnClickListener{
             var ticket = Ticket(event?.name, event?.date, event?.price.toString())
-            insertData(ticket)
+
+
+            val intent = Intent(this, PayActivity::class.java)
+            intent.putExtra(INTENT_PARCELABLE, ticket)
+            startActivity(intent)
 
         }
 

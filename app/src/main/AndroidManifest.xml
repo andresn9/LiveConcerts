@@ -25,6 +25,9 @@
             android:name=".EventDetailActivity"
             android:exported="false" />
         <activity
+            android:name=".PayActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false"
             android:label="@string/title_activity_main"
