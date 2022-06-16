@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.liveconcerts.ArtistActivity
 import com.android.liveconcerts.EventDetailActivity
 import com.android.liveconcerts.R
 import com.android.liveconcerts.databinding.FragmentArtistBinding
@@ -103,8 +104,9 @@ class ArtistFragment : Fragment() {
         recyclerView.adapter = artistAdapter
 
         artistAdapter.onItemClick = {
-            val intent = Intent(activity, EventDetailActivity::class.java)
-            intent.putExtra("artista", it)
+            val intent = Intent(activity, ArtistActivity::class.java)
+            intent.putExtra("artistaImage", it.image)
+            intent.putExtra("artistaName", it.name)
             startActivity(intent)
         }
 
@@ -112,18 +114,18 @@ class ArtistFragment : Fragment() {
 
         return view
     }
-    fun readJson(){
+    public fun readJson() {
 
-        var json :String? = null
-        val jsonArr : JSONArray? = null
+        var json: String? = null
+        val jsonArr: JSONArray? = null
         try {
-            val inputStream : InputStream = activity?.assets!!.open("data.json")
-            json = inputStream.bufferedReader().use {it.readText()}
+            val inputStream: InputStream = activity?.assets!!.open("data.json")
+            json = inputStream.bufferedReader().use { it.readText() }
             val jsonArr = JSONArray(json)
 
 
 
-            for (i in 0..jsonArr.length()-1){
+            for (i in 0..jsonArr.length() - 1) {
                 var jsonObj = jsonArr.getJSONObject(i)
 
 
@@ -132,12 +134,11 @@ class ArtistFragment : Fragment() {
                 var name = jsonObj.getString("name")
 
 
-
                 val resultImage: Deferred<Bitmap?> = lifecycleScope.async(Dispatchers.IO) {
                     imageURL.toBitmap
                 }
 
-                var artist = Artist(image,name)
+                var artist = Artist(image, name)
 
                 artists.add(artist)
 
@@ -145,11 +146,10 @@ class ArtistFragment : Fragment() {
 
 
 
-        }
-        catch (e : IOException){
+
+        } catch (e: IOException) {
 
         }
-
 
 
     }
