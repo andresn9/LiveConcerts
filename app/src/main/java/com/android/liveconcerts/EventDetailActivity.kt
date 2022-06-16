@@ -64,8 +64,9 @@ class EventDetailActivity : AppCompatActivity() {
         }
 
         binding.btnPaypal.setOnClickListener{
-            var ticket = Ticket(event?.name, event?.date, event?.price.toString())
-            insertData(ticket)
+//            var ticket = Ticket(event?.name, event?.date, event?.price.toString())
+//            insertData(ticket)
+                showPaypal()
         }
 
 
@@ -74,13 +75,22 @@ class EventDetailActivity : AppCompatActivity() {
 
     }
 
-    private fun insertData(ticket: Ticket){
-        db.collection("tickets").add(ticket).addOnSuccessListener {
-            Toast.makeText(this, "Entrada comprada", Toast.LENGTH_SHORT).show()
-        }.addOnFailureListener{
-            Toast.makeText(this, "Error al comprar la entrada", Toast.LENGTH_SHORT).show()
-        }
+    private fun showPaypal(){
+        val paypalIntent = Intent(this, PayPalActivity::class.java)
+        startActivity(paypalIntent)
     }
+
+//    private fun insertData(ticket: Ticket){
+//
+//
+//        db.collection("tickets").add(ticket).addOnSuccessListener {
+//            Toast.makeText(this, "Entrada comprada", Toast.LENGTH_SHORT).show()
+//        }.addOnFailureListener{
+//            Toast.makeText(this, "Error al comprar la entrada", Toast.LENGTH_SHORT).show()
+//        }
+//
+//
+//    }
 
     private fun readData(){
         db.collection("tickets").get().addOnCompleteListener {
