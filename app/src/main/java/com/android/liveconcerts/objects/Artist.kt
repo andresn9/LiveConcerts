@@ -1,11 +1,13 @@
 package com.android.liveconcerts.objects
 
+import android.graphics.Bitmap
 import android.os.Parcel
 import android.os.Parcelable
+import kotlinx.coroutines.Deferred
 
-class Artist(val image:Int, val name:String) : Parcelable {
+class Artist(val image: Deferred<Bitmap?>, val name:String) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
+        parcel.readString()!!,
         parcel.readString()!!
     ) {
     }
@@ -15,7 +17,7 @@ class Artist(val image:Int, val name:String) : Parcelable {
     }
 
     override fun writeToParcel(p0: Parcel, p1: Int) {
-        p0.writeInt(image)
+        p0.writeString(image)
         p0.writeString(name)
     }
 

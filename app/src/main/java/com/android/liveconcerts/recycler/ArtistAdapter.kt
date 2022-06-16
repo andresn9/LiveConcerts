@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.LayoutRes
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.android.liveconcerts.R
 import com.android.liveconcerts.objects.Artist
@@ -27,7 +28,7 @@ class ArtistAdapter(private val artistList: ArrayList<Artist>)
 
     override fun onBindViewHolder(holder: ArtistViewHolder, position: Int) {
         val artist = artistList[position]
-        holder.image.setImageResource(artist.image)
+        holder.image.setImageURI(artist.image.toUri())
         holder.text.text = artist.name
 
         holder.itemView.setOnClickListener{

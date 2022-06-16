@@ -1,20 +1,27 @@
 package com.android.liveconcerts.fragments
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.text.Layout
 import android.view.*
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.liveconcerts.EventDetailActivity
 import com.android.liveconcerts.R
-import com.android.liveconcerts.databinding.ActivityLoginBinding
 import com.android.liveconcerts.databinding.FragmentArtistBinding
 import com.android.liveconcerts.objects.Artist
 import com.android.liveconcerts.recycler.ArtistAdapter
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import org.json.JSONArray
+import java.io.IOException
+import java.io.InputStream
+import java.net.URL
 
 
 /**
@@ -29,6 +36,16 @@ class ArtistFragment : Fragment() {
     private lateinit var recyclerView : RecyclerView
     private lateinit var artistList : ArrayList<Artist>
     private lateinit var artistAdapter: ArtistAdapter
+
+    private lateinit var artistsNames : ArrayList<String>
+    private lateinit var artistsImages : ArrayList<String>
+
+    var artists = arrayListOf<Artist>()
+
+
+
+
+
 
     //Habilita lo que se muestra en el fragment
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +76,14 @@ class ArtistFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+//        val bundle = arguments
+//        val message = bundle!!.getString("mText")
+
         // Inflate the layout for this fragment
+
+        readJason()
+
         _binding = FragmentArtistBinding.inflate(inflater, container, false)
         val view = binding.root
 
@@ -69,13 +93,13 @@ class ArtistFragment : Fragment() {
 
         artistList = ArrayList()
 
-        artistList.add(Artist(R.drawable.code_android_logo , "Los chichos"))
-        artistList.add(Artist(R.drawable.code_android_logo , "Los pecos"))
-        artistList.add(Artist(R.drawable.code_android_logo , "Los juncos"))
-        artistList.add(Artist(R.drawable.code_android_logo , "Las ketchu"))
-        artistList.add(Artist(R.drawable.code_android_logo , "Los manolos"))
+//        artistList.add(Artist(R.drawable.code_android_logo , "Los chichos"))
+//        artistList.add(Artist(R.drawable.code_android_logo , "Los pecos"))
+//        artistList.add(Artist(R.drawable.code_android_logo , "Los juncos"))
+//        artistList.add(Artist(R.drawable.code_android_logo , "Las ketchu"))
+//        artistList.add(Artist(R.drawable.code_android_logo , "Los manolos"))
 
-        artistAdapter = ArtistAdapter(artistList)
+        artistAdapter = ArtistAdapter(artists)
         recyclerView.adapter = artistAdapter
 
         artistAdapter.onItemClick = {
@@ -84,6 +108,57 @@ class ArtistFragment : Fragment() {
             startActivity(intent)
         }
 
+
+
         return view
     }
+    fun readJason(){
+
+        var json :String? = null
+        val jsonArr : JSONArray? = null
+        try {
+            val inputStream : InputStream = activity?.assets!!.open("data.json")
+            json = inputStream.bufferedReader().use {it.readText()}
+            val jsonArr = JSONArray(json)
+
+
+
+            for (i in 0..jsonArr.length()-1){
+                var jsonObj = jsonArr.getJSONObject(i)
+
+
+
+                var imageURL = URL(jsonObj.getString("image"))
+                var name = jsonObj.getString("name")
+
+
+
+                val resultImage: Deferred<Bitmap?> = lifecycleScope.async(Dispatchers.IO) {
+                    imageURL.toBitmap
+                }
+
+                var artist = Artist(resultImage,name)
+
+                artists.add(artist)
+
+            }
+
+
+
+        }
+        catch (e : IOException){
+
+        }
+
+
+
+    }
+    val URL.toBitmap:Bitmap?
+        get() {
+            return try {
+                BitmapFactory.decodeStream(openStream())
+            }catch (e: IOException){null}
+        }
+
+
 }
