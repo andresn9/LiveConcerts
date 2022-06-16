@@ -87,11 +87,6 @@ class ArtistActivity : AppCompatActivity() {
         }
 
 
-
-
-
-
-
         setContentView(binding.root)
 
 //        val fragmentManager = supportFragmentManager

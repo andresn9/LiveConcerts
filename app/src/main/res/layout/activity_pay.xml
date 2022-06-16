@@ -91,29 +91,29 @@
 
     <EditText
         android:id="@+id/fld_name"
-        android:layout_width="412dp"
-        android:layout_height="51dp"
+        android:layout_width="385dp"
+        android:layout_height="54dp"
         android:layout_marginTop="16dp"
         android:background="@color/yellowPrimaryLight"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Nombre de la tarjeta"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/fld_number"
-        android:layout_width="411dp"
+        android:layout_width="385dp"
         android:layout_height="51dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:background="@color/yellowPrimaryLight"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Número de tarjeta"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fld_name" />
 
@@ -125,20 +125,21 @@
         android:layout_marginEnd="12dp"
         android:background="@color/yellowPrimaryLight"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="CVV"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fld_number" />
 
     <EditText
         android:id="@+id/fld_date"
-        android:layout_width="190dp"
+        android:layout_width="180dp"
         android:layout_height="51dp"
         android:background="@color/yellowPrimaryLight"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Fecha de expiración"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toStartOf="@+id/fld_cvv"
+        app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/fld_cvv" />
 
