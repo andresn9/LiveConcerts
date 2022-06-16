@@ -13,6 +13,7 @@ import com.android.liveconcerts.databinding.ActivityLoginBinding
 import com.android.liveconcerts.objects.Artist
 import com.android.liveconcerts.objects.Event
 import com.android.liveconcerts.objects.Ticket
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.paypal.android.sdk.payments.PayPalPayment
 import com.paypal.android.sdk.payments.PayPalService
@@ -33,6 +34,8 @@ class EventDetailActivity : AppCompatActivity() {
     val myExecutor = Executors.newSingleThreadExecutor()
     val myHandler = Handler(Looper.getMainLooper())
     var mImage: Bitmap? = null
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,9 +67,9 @@ class EventDetailActivity : AppCompatActivity() {
         }
 
         binding.btnPaypal.setOnClickListener{
-//            var ticket = Ticket(event?.name, event?.date, event?.price.toString())
-//            insertData(ticket)
-                showPaypal()
+            var ticket = Ticket(event?.name, event?.date, event?.price.toString())
+            insertData(ticket)
+
         }
 
 
@@ -75,26 +78,30 @@ class EventDetailActivity : AppCompatActivity() {
 
     }
 
-    private fun showPaypal(){
-        val paypalIntent = Intent(this, PayPalActivity::class.java)
-        startActivity(paypalIntent)
-    }
-
-//    private fun insertData(ticket: Ticket){
-//
-//
-//        db.collection("tickets").add(ticket).addOnSuccessListener {
-//            Toast.makeText(this, "Entrada comprada", Toast.LENGTH_SHORT).show()
-//        }.addOnFailureListener{
-//            Toast.makeText(this, "Error al comprar la entrada", Toast.LENGTH_SHORT).show()
-//        }
-//
-//
+//    private fun showPaypal(){
+//        val paypalIntent = Intent(this, PayPalActivity::class.java)
+//        startActivity(paypalIntent)
 //    }
+
+    private fun insertData(ticket: Ticket){
+        val currentuser = FirebaseAuth.getInstance().currentUser!!.uid
+
+
+        db.collection("userData").document(currentuser).collection("tickets").document(ticket.name.toString())
+            .set(ticket).addOnSuccessListener {
+            Toast.makeText(this, "Entrada comprada", Toast.LENGTH_SHORT).show()
+
+        }.addOnFailureListener{
+            Toast.makeText(this, "Error al comprar la entrada", Toast.LENGTH_SHORT).show()
+        }
+
+
+    }
 
     private fun readData(){
         db.collection("tickets").get().addOnCompleteListener {
             if (it.isSuccessful){
+
 
             }
         }

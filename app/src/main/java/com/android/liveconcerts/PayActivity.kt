@@ -16,7 +16,7 @@ import com.android.liveconcerts.recycler.TicketAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 
-class TicketActivity : AppCompatActivity() {
+class PayActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityTicketBinding.inflate(layoutInflater) }
     private lateinit var ticketList : ArrayList<Ticket>
