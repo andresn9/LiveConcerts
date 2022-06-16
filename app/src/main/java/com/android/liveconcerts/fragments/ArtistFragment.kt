@@ -82,7 +82,7 @@ class ArtistFragment : Fragment() {
 
         // Inflate the layout for this fragment
 
-        readJason()
+        readJson()
 
         _binding = FragmentArtistBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -112,7 +112,7 @@ class ArtistFragment : Fragment() {
 
         return view
     }
-    fun readJason(){
+    fun readJson(){
 
         var json :String? = null
         val jsonArr : JSONArray? = null

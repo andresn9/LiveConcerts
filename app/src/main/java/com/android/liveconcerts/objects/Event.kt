@@ -4,14 +4,14 @@ import android.os.Parcel
 import android.os.Parcelable
 
 class Event(
-    var image: Int, var name: String? ="",
-    var description: String? = "", var date: String? = "", var price: Int=0) : Parcelable {
+    var image: String? = "", var name: String? ="",
+    var description: String? = "", var date: String? = "", var price: String? = "") : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readInt()
+        parcel.readString(),
+        parcel.readString()
     ) {
     }
 
@@ -20,11 +20,11 @@ class Event(
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(image)
+        parcel.writeString(image)
         parcel.writeString(name)
         parcel.writeString(description)
         parcel.writeString(date)
-        parcel.writeInt(price)
+        parcel.writeString(price)
     }
 
     companion object CREATOR : Parcelable.Creator<Event> {
