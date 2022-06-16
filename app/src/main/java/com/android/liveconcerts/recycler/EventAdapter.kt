@@ -48,6 +48,8 @@ RecyclerView.Adapter<EventAdapter.EventViewHolder>(){
 
     }
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.event_result_view,parent, false)
         return EventViewHolder(v)
