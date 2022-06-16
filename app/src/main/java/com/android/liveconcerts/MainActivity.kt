@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        readJason()
+
 
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
@@ -51,32 +51,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    }
-
-    fun readJason(){
-
-        var json :String? = null
-        val jsonArr : JSONArray? = null
-        try {
-            val inputStream : InputStream = assets.open("data.json")
-            json = inputStream.bufferedReader().use {it.readText()}
-            val jsonArr = JSONArray(json)
-
-
-            for (i in 0..jsonArr.length()-1){
-                var jsonObj = jsonArr.getJSONObject(i)
-
-                var artist = Artist(jsonObj.getString("image"),jsonObj.getString("name"))
-                artists.add(artist)
-
-            }
-
-
-
-        }
-        catch (e : IOException){
-
-        }
 
 
 

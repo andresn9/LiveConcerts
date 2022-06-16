@@ -67,11 +67,11 @@ class EventsFragment : Fragment() {
 
         eventsList = ArrayList()
 
-        eventsList.add(Event(R.drawable.logomad , "MadCool", "Madrid", "5/7/22", 180))
-        eventsList.add(Event(R.drawable.logoand , "Andalucía Big Festival", "Málaga", "5/7/22", 120))
-        eventsList.add(Event(R.drawable.logoresu , "Resurrection", "Galicia", "5/7/22", 150))
-        eventsList.add(Event(R.drawable.logops , "Primavera Sound", "Barcelona", "5/7/22", 180))
-        eventsList.add(Event(R.drawable.logocala , "Calamijas", "Málaga", "5/7/22", 100))
+//        eventsList.add(Event(R.drawable.logomad , "MadCool", "Madrid", "5/7/22", 180))
+//        eventsList.add(Event(R.drawable.logoand , "Andalucía Big Festival", "Málaga", "5/7/22", 120))
+//        eventsList.add(Event(R.drawable.logoresu , "Resurrection", "Galicia", "5/7/22", 150))
+//        eventsList.add(Event(R.drawable.logops , "Primavera Sound", "Barcelona", "5/7/22", 180))
+//        eventsList.add(Event(R.drawable.logocala , "Calamijas", "Málaga", "5/7/22", 100))
 
         eventsAdapter = EventAdapter(eventsList)
         recyclerView.adapter = eventsAdapter

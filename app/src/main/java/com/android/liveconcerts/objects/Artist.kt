@@ -5,7 +5,8 @@ import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.coroutines.Deferred
 
-class Artist(val image: Deferred<Bitmap?>, val name:String) : Parcelable {
+
+class Artist(val image: String, val name:String) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         parcel.readString()!!

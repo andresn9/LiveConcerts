@@ -127,7 +127,7 @@ class ArtistFragment : Fragment() {
                 var jsonObj = jsonArr.getJSONObject(i)
 
 
-
+                var image = jsonObj.getString("image")
                 var imageURL = URL(jsonObj.getString("image"))
                 var name = jsonObj.getString("name")
 
@@ -137,7 +137,7 @@ class ArtistFragment : Fragment() {
                     imageURL.toBitmap
                 }
 
-                var artist = Artist(resultImage,name)
+                var artist = Artist(image,name)
 
                 artists.add(artist)
 
